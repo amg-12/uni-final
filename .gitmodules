@@ -1,0 +1,3 @@
+[submodule "learning-2022"]
+	path = learning-2022
+	url = git@git.cs.bham.ac.uk:fp/learning-2022.git
