@@ -19,8 +19,8 @@ logNode n = concat [
   pL  4 $ show $ get ACC n, "| (",
   pL  4 $ show $ get BAK n, ")       "]
 
-log :: [Program] -> IO ()
-log ps = putStr $ unlines [concatMap logNode (Map.elems $ nodes p) ++ show (ins p) ++ show (outs p) | p <- ps]
+logP :: [Program] -> IO ()
+logP ps = putStr $ unlines [concatMap logNode (Map.elems $ nodes p) ++ show (ins p) ++ show (outs p) | p <- ps]
 
 data VisState = X | Y | C
 

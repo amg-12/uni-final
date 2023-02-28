@@ -1,0 +1,14 @@
+@1
+   MOV 0 ACC
+   SUB IN
+&: ADD @2
+   MOV -2 @2
+   JLZ &
+   MOV @2 @2
+   MOV ACC @2
+
+@2
+&: MOV ACC @1
+   SUB @1
+   JGZ &
+   MOV @1 OUT

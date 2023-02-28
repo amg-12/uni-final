@@ -1,0 +1,17 @@
+@powerof2
+  MOV IN  ACC
+  SAV
+  MOV 1   ACC
+
+L:SWP
+  JEZ E
+  JLZ F
+  SUB 1
+  SWP
+  ADD ACC
+  JMP L
+
+F:HCF
+
+E:SWP
+  MOV ACC OUT
