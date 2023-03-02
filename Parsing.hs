@@ -101,7 +101,7 @@ program :: Parser [(String, [Either Operation Label])]
 program = many namedNode
 
 processProgram :: [(String, [Either Operation Label])] -> Map.Map String Node
-processProgram = foldr (\ x -> Map.insert (fst x) (N (process (snd x) (const $ error "???") []) (const 0) Default)) Map.empty
+processProgram = foldr (\ x -> Map.insert (fst x) (N (process (snd x) (const undefined) []) (const 0) Default)) Map.empty
 
 parseProgram :: String -> Program
 parseProgram x = Pr ((processProgram . fst . head . parse program) x) [] []
