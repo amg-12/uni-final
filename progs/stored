@@ -1,5 +1,8 @@
+@0
+   MOV IN @1
+
 @1
-   MOV IN @2
+   MOV @0 @2
 
 @2
    MOV @1 ACC

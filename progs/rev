@@ -1,0 +1,58 @@
+@1
+  ADD 6
+  SWP
+  JRO 3
+L:SWP
+  JEZ Z
+  MOV IN  ACC
+Z:MOV ACC @2
+  SWP
+  SUB 1
+  JGZ L
+
+@2
+MOV @1  ACC
+MOV @1  @3
+MOV @1  @3
+MOV @1  @3
+MOV @1  @3
+MOV @1  @3
+MOV ACC @3
+
+@3
+MOV @2  ACC
+MOV @2  @4
+MOV @2  @4
+MOV @2  @4
+MOV @2  @4
+MOV ACC @4
+MOV @2  @4
+
+@4
+MOV @3  ACC
+MOV @3  @5
+MOV @3  @5
+MOV @3  @5
+MOV ACC @5
+MOV @3  @5
+MOV @3  @5
+
+@5
+MOV @4  ACC
+MOV @4  @6
+MOV @4  @6
+MOV ACC @6
+MOV @4  @6
+MOV @4  @6
+MOV @4  @6
+
+@6
+  ADD 6
+L:SWP
+  MOV @5  ACC
+  JEZ S
+  MOV ACC OUT
+S:SWP
+  SUB 1
+  JGZ L
+  MOV 0   OUT

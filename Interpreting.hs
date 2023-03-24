@@ -62,8 +62,8 @@ eval  IN      _ _ (Pr _ (i:is) _) = Just i
 eval  IN      _ _ (Pr _ []     _) = Nothing
 eval (Port x) o _ (Pr ns _ _) = 
   case current (ns Map.! x) of
-    O (Mov o) (Cons y) -> Just y
-    _                  -> Nothing
+    O (Mov o') (Cons y) -> if o == o' then Just y else Nothing
+    _                   -> Nothing
 
 -- internally execute a line of code
 e :: Operator -> Int -> Node -> Node

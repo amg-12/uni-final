@@ -1,0 +1,28 @@
+@1
+  MOV IN ACC
+  JGZ P
+  NEG
+P:MOV 1   @2
+  MOV ACC @2
+L:SWP
+  MOV 3   @2
+  ADD     @2
+  SWP
+  SUB 1
+  JGZ L
+  SWP
+  MOV ACC @3
+  MOV NIL ACC
+  SAV
+
+@2
+JRO @1
+MOV @1 ACC
+JRO -2
+MOV ACC @1
+
+@3
+MOV @1 @4
+
+@4
+MOV @3 OUT

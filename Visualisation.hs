@@ -22,7 +22,7 @@ logNode n = concat [
   pL  4 $ show $ get BAK n, ")       "]
 
 logP :: [Program] -> IO ()
-logP ps = putStr $ unlines [concatMap logNode (Map.elems $ nodes p) ++ show (ins p) ++ show (outs p) | p <- ps]
+logP ps = putStr $ unlines [concatMap logNode (Map.elems $ nodes p) ++ show (outs p) | p <- ps]
 
 data VisState = X | Y | C
 
@@ -44,7 +44,7 @@ vis p = v X 0 0 (outs p) (replicate (xMAX*yMAX) 0)
 
 render :: [Int] -> String
 render [] = []
-render xs = concatMap ((++ "█\x1b[37m") . f) (take xMAX xs) ++ "\n" ++ render (drop xMAX xs)
+render xs = concatMap ((++ "█\ESC[0m") . f) (take xMAX xs) ++ "\n" ++ render (drop xMAX xs)
   where f x = case x of
                 1 -> "\x1b[38;5;239m" -- dark grey
                 2 -> "\x1b[38;5;247m" -- bright grey
@@ -71,7 +71,7 @@ frame = unlines [ -- 29x17
   "║                   ║      ║",
   "║                   ║      ║",
   "║                   ║      ║",
-  "║                   ║      ║",
+  "║                   ║    \x1b[31m♥\ESC[0m ║",
   "╚═══════════════════╩══════╝"]
 
 cls :: IO ()
