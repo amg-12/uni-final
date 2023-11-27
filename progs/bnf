@@ -1,0 +1,30 @@
+<program>   ::= <node> | <program> <node> ; up to 12 
+<node>      ::= <line> | <node> <line>    ; up to 15 
+<line>      ::= <end> | <opt-space> <operation> <end> 
+              | <opt-space> <label> ":" <line> 
+<operation> ::= "NOP" | "SWP" | "SAV" | "NEG" | "HCF" | "ADD" <space> <src> 
+              | "SUB" <space> <src>   | "MOV" <space> <src> <opt-comma> <dst> 
+              | "JRO" <space> <src>   | "JMP" <space> <label>
+              | "JEZ" <space> <label> | "JNZ" <space> <label>
+              | "JGZ" <space> <label> | "JLZ" <space> <label> 
+<src>       ::= <constant> | <dst> 
+<dst>       ::= "ACC" | "NIL" | "LEFT" | "RIGHT" | "UP" | "DOWN" | "ANY" | "LAST" 
+<label>     ::= <char> | <label> <char>
+<comment>   ::= <opt-space> "#" <string>
+<constant>  ::= <number> | "+" <number> | "-" <number> 
+<number>    ::= <digit> | <digit> <digit> | <digit> <digit> <digit> 
+<end>       ::= "\n" | <comment> "\n"
+<space>     ::= " " | <space> + " "
+<opt-space> ::= "" | <space>
+<opt-comma> ::= <space> | "," <opt-space>
+<string>    ::= <symbol2> | <string> <symbol2>
+<char>      ::= <digit> | <letter> | <symbol>
+<char2>     ::= <char> | <symbol2>
+<digit>     ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" 
+<letter>    ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" 
+              | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" 
+              | "W" | "X" | "Y" | "Z"
+<symbol>    ::= "|" | "$" | "%" | "&" | "(" | ")" | "*" | "+" | "," | "-" | "."
+              | "/" | ";" | ">" | "=" | "<" | "?" | "[" | "\" | "]" | "^" | "_"
+              | "`" | "{" | "}" | "~" | "'" | """ | "¬" 
+<symbol2>   ::= " " | "!" | ":" | "#"

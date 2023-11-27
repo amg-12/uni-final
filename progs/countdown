@@ -1,0 +1,4 @@
+@1
+  ADD 999
+A:SUB 1
+  JGZ A
